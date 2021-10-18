@@ -1,25 +1,39 @@
 // Matthew Marsico
 // I made this because nobody cares about grade history and the GPA calculater didn't work
 
-function goToFirstQuarter() {
-  document.getElementsByClassName("dropdown-menu")[0].getElementsByTagName("a")[0].click();
-  setTimeout(() => {  console.log("World!"); }, 2000);
+// Navigate to proper area functions below
+
+// check to see if you are on progress page, if so, do nothing, if not, move there and wait.
+function goToProgressPage() {
+  const courses = document.getElementById("courses");
+  console.log(courses);
+  isOnProgressPage = typeof(courses) != null
+  if (!isOnProgressPage) {
+    console.log("NOT on progress page.");
+    document.getElementById('progress-btn').click();
+    setTimeout(() => {  console.log("Hi there if you are reading this!"); }, 1000);
+  } else { console.log("on progress page"); }
 }
 
-function goToProgressPage() {
-  document.getElementById('progress-btn').click();
+// go to first quarter page. This function is primarily for testing because, at the time of writing, I have no first quarter grades.
+function goToFirstQuarter() {
+  document.getElementsByClassName("btn btn-default btn-sm dropdown-toggle")[0].click();
+  document.getElementsByClassName("dropdown-menu")[0].getElementsByTagName("a")[0].click();
+  setTimeout(() => {  console.log("Hi there if you are reading this!"); }, 100);
 }
+
+
+// -------------------------
 
 // Get the class grades and names
 function getClassesAndGrades() {
-    document.getElementsByClassName("btn btn-default btn-sm bold  ")[0].click()
+    // document.getElementsByClassName("btn btn-default btn-sm bold  ")[0].click()
     const htmlRowsCollection = document.getElementsByTagName("h3");
     const textRowsCollection = [];
 
     for (let ele of htmlRowsCollection) {
         textRowsCollection.push(ele.innerText);
     }
-    console.log(textRowsCollection);
     return textRowsCollection
 }
 
@@ -29,7 +43,6 @@ function createMapWithArray(collection) {
     for (let i=0; i < 18; i+=2) {
         gradeAndClassMap.set(collection[i], collection[i+1]);
     }
-    console.log(gradeAndClassMap);
     return gradeAndClassMap;
 }
 
@@ -38,11 +51,9 @@ function ridMapOfGradelessClasses(collection) {
     let finalCollection = new Map();
     collection.forEach(function(value, key) {
         if (value.search("--") == -1) {
-            console.log(value + " passed");
             finalCollection.set(key, value);
         }
     })
-    console.log(finalCollection);
     return finalCollection;
 }
 
@@ -52,7 +63,6 @@ function roundAllGrades(map) {
     map.forEach(function (value, key) {
         returnMap.set(key, Math.round(parseFloat(value)))
     })
-    console.log(returnMap);
     return returnMap;
 }
 
@@ -73,7 +83,6 @@ function ridIllegalValues(map) {
     map.forEach(function (value, key) {
         returnMap.set(key, correctValue(value))
     });
-    console.log(returnMap);
     return returnMap;
 }
 
@@ -89,7 +98,6 @@ function makeClassAndGPMap(map) {
         map.forEach(function (value, key) {
         returnMap.set(key, gpaValues[100-value])
     })
-    console.log(returnMap);
     return returnMap;
 }
 
@@ -107,7 +115,6 @@ function addGPABoosts(map) {
     map.forEach(function(value, key) {
         returnMap.set(key, (value + boostValue(key)))
     })
-    console.log(returnMap);
     return returnMap;
 }
 
@@ -117,7 +124,6 @@ function averageTheGradePoints(map) {
     map.forEach((value, key) => arrayOfGPs.push(value))
     let avGPA = (arrayOfGPs.reduce((a, b) => a + b, 0) / arrayOfGPs.length);
     avGPA = Math.round(avGPA * 100) / 100;
-    console.log(avGPA);
     return avGPA;
 }
 
@@ -146,8 +152,8 @@ function returnGPA() {
         getClassesAndGrades())))))))
 }
 function runGPACalculator() {
+    // goToProgressPage();
     goToFirstQuarter();
-    goToProgressPage();
     return styleGPASection(returnGPA());
 }
 
