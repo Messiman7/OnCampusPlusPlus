@@ -2,7 +2,7 @@
 // I made this because nobody cares about grade history and the GPA calculater didn't work
 
 function goToFirstQuarter() {
-  
+  document.getElementsByClassName("dropdown-menu")[0].getElementsByTagName("a")[0].click();
 }
 
 function goToProgressPage() {
