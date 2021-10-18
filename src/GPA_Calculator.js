@@ -1,18 +1,9 @@
 // Matthew Marsico
 // I made this because nobody cares about grade history and the GPA calculater didn't work
 
-/* 
-    NOTES: !!!!
-    - you need to account for when there is no grade value for a class
-
-    for each row element
-        does name contain '-H -'?
-            add 1 to gpa
-        does name contain 'AP'
-            add .25 to gpa
-
-*/
-
+function goToProgressPage() {
+  document.getElementById('progress-btn').click();
+}
 
 // Get the class grades and names
 function getClassesAndGrades() {
@@ -120,7 +111,6 @@ function averageTheGradePoints(map) {
 }
 
 // style everything and set the GPAText variable
-
 function styleGPASection(finalGPA) {
     // Rename the Conduct tile to GPA because nobody cares abt the demerits
     let headers = document.getElementsByClassName("bb-tile-header");
@@ -134,8 +124,6 @@ function styleGPASection(finalGPA) {
     gpaText.style.fontSize = '40px'
 }
 
-
-
 function returnGPA() {
     return averageTheGradePoints(
         addGPABoosts(
@@ -147,8 +135,8 @@ function returnGPA() {
         getClassesAndGrades())))))))
 }
 function runGPACalculator() {
+    goToProgressPage();
     return styleGPASection(returnGPA());
 }
-
 
 runGPACalculator();
