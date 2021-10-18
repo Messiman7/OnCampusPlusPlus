@@ -32,7 +32,8 @@ function createMapWithArray(collection) {
 function ridMapOfGradelessClasses(collection) {
     let finalCollection = new Map();
     collection.forEach(function(value, key) {
-        if (value != '--  ') {
+        if (value != '-- ') {
+            console.log(key + " passed");
             finalCollection.set(key, value);
         }
     })
