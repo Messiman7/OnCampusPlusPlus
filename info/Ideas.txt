@@ -1,0 +1,9 @@
+IDEAS:
+- implement a feature so that you can always click the bookmark and it will return to the progress page
+- add event listeners so that you can toggle commonly used areas with keyboard shortcuts
+- add reminders for assignments
+- show missing assignemnts easier
+- show assignments that are a day prior (maybe in a different color)
+- Add a color scheme feature with support for new colors
+  - Have a text entry box (that is safe for javascript) that allows a person to copy and paste color schemes
+  - Have a github file for commonly used color schemes
