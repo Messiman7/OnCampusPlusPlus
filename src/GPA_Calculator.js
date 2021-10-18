@@ -3,6 +3,7 @@
 
 function goToFirstQuarter() {
   document.getElementsByClassName("dropdown-menu")[0].getElementsByTagName("a")[0].click();
+  setTimeout(() => {  console.log("World!"); }, 2000);
 }
 
 function goToProgressPage() {
@@ -114,7 +115,7 @@ function addGPABoosts(map) {
 function averageTheGradePoints(map) {
     const arrayOfGPs = [];
     map.forEach((value, key) => arrayOfGPs.push(value))
-    let avGPA = (arrayOfGPs.reduce((a, b) => a + b) / arrayOfGPs.length);
+    let avGPA = (arrayOfGPs.reduce((a, b) => a + b, 0) / arrayOfGPs.length);
     avGPA = Math.round(avGPA * 100) / 100;
     console.log(avGPA);
     return avGPA;
@@ -145,6 +146,7 @@ function returnGPA() {
         getClassesAndGrades())))))))
 }
 function runGPACalculator() {
+    goToFirstQuarter();
     goToProgressPage();
     return styleGPASection(returnGPA());
 }
