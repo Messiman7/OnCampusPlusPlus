@@ -14,6 +14,7 @@ function getClassesAndGrades() {
     for (let ele of htmlRowsCollection) {
         textRowsCollection.push(ele.innerText);
     }
+    console.log(textRowsCollection);
     return textRowsCollection
 }
 
@@ -23,6 +24,7 @@ function createMapWithArray(collection) {
     for (let i=0; i < 18; i+=2) {
         gradeAndClassMap.set(collection[i], collection[i+1]);
     }
+    console.log(gradeAndClassMap);
     return gradeAndClassMap;
 }
 
@@ -34,6 +36,7 @@ function ridMapOfGradelessClasses(collection) {
             finalCollection.set(key, value);
         }
     })
+    console.log(finalCollection);
     return finalCollection;
 }
 
@@ -43,6 +46,7 @@ function roundAllGrades(map) {
     map.forEach(function (value, key) {
         returnMap.set(key, Math.round(parseFloat(value)))
     })
+    console.log(returnMap);
     return returnMap;
 }
 
@@ -63,6 +67,7 @@ function ridIllegalValues(map) {
     map.forEach(function (value, key) {
         returnMap.set(key, correctValue(value))
     });
+    console.log(returnMap);
     return returnMap;
 }
 
@@ -78,6 +83,7 @@ function makeClassAndGPMap(map) {
         map.forEach(function (value, key) {
         returnMap.set(key, gpaValues[100-value])
     })
+    console.log(returnMap);
     return returnMap;
 }
 
@@ -95,6 +101,7 @@ function addGPABoosts(map) {
     map.forEach(function(value, key) {
         returnMap.set(key, (value + boostValue(key)))
     })
+    console.log(returnMap);
     return returnMap;
 }
 
@@ -102,9 +109,7 @@ function addGPABoosts(map) {
 function averageTheGradePoints(map) {
     const arrayOfGPs = [];
     map.forEach((value, key) => arrayOfGPs.push(value))
-    console.log(arrayOfGPs)
     let avGPA = (arrayOfGPs.reduce((a, b) => a + b) / arrayOfGPs.length);
-    console.log(avGPA);
     avGPA = Math.round(avGPA * 100) / 100;
     console.log(avGPA);
     return avGPA;
