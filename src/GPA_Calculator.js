@@ -1,6 +1,10 @@
 // Matthew Marsico
 // I made this because nobody cares about grade history and the GPA calculater didn't work
 
+function goToFirstQuarter() {
+  
+}
+
 function goToProgressPage() {
   document.getElementById('progress-btn').click();
 }
@@ -32,8 +36,8 @@ function createMapWithArray(collection) {
 function ridMapOfGradelessClasses(collection) {
     let finalCollection = new Map();
     collection.forEach(function(value, key) {
-        if (value != '-- ') {
-            console.log(key + " passed");
+        if (value.search("--") == -1) {
+            console.log(value + " passed");
             finalCollection.set(key, value);
         }
     })
