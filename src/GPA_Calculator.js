@@ -1,3 +1,4 @@
+
 // Matthew Marsico
 // I made this because nobody cares about grade history and the GPA calculater didn't work
 
@@ -5,14 +6,15 @@
 
 // check to see if you are on progress page, if so, do nothing, if not, move there and wait.
 function goToProgressPage() {
-  const courses = document.getElementById("courses");
-  console.log(courses);
-  isOnProgressPage = typeof(courses) != null
-  if (!isOnProgressPage) {
-    console.log("NOT on progress page.");
-    document.getElementById('progress-btn').click();
-    setTimeout(() => {  console.log("Hi there if you are reading this!"); }, 1000);
-  } else { console.log("on progress page"); }
+    let onProgressPage;
+    try {
+        onProgressPage = document.getElementsByClassName("pull-left bold mr-4 h3-line-height")[0].innerText.search("Grades") != -1;
+        console.log(onProgressPage);
+    } finally {
+        if (onProgressPage !== null) {
+            alert("Activate OnCampusPlusPlus bookmark on Progress Page.");
+        }
+    }
 }
 
 // go to first quarter page. This function is primarily for testing because, at the time of writing, I have no first quarter grades.
@@ -152,9 +154,9 @@ function returnGPA() {
         getClassesAndGrades())))))))
 }
 function runGPACalculator() {
-    // goToProgressPage();
     goToFirstQuarter();
     return styleGPASection(returnGPA());
 }
 
 runGPACalculator();
+
