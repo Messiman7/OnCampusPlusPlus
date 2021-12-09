@@ -29,7 +29,7 @@ function goToFirstQuarter() {
 
 // Get the class grades and names
 function getClassesAndGrades() {
-    // document.getElementsByClassName("btn btn-default btn-sm bold  ")[0].click()
+    document.getElementsByClassName("btn btn-default btn-sm bold  ")[0].click()
     const htmlRowsCollection = document.getElementsByTagName("h3");
     const textRowsCollection = [];
 
@@ -154,7 +154,6 @@ function returnGPA() {
         getClassesAndGrades())))))))
 }
 function runGPACalculator() {
-    goToFirstQuarter();
     return styleGPASection(returnGPA());
 }
 
